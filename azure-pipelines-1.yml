@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
+- script: echo hola Parcial!
   displayName: 'Run a one-line script'
 
 - script: |
@@ -18,33 +18,3 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-jobs:
-  #build:
-    #...
-  deployProduction:
-    machine:
-      enabled: true
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "23:34:59:d9:68:e6:bb:94:7f:66:43:11:03:f3:b1:7d"
-            - "a8:cc:0f:95:0a:96:72:e0:88:a1:ee:17:59:95:7a:3b"
-      - run:
-          name: Deploy Over SSH 
-          command: |
-             ssh $SSHUSERPRO1@SSHHOSTPRO 
-      - run:
-          name: Deploy Over SSH 2
-          command: |
-             ssh $SSHUSERPRO2@SSHHOSTPRO2
-  deployDevelop:
-    machine:
-      enabled: true
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "a0:94:9d:80:1f:8f:20:f0:f6:dc:14:65:40:09:89:70"
-      - run:
-          name: Deploy Over SSH
-          command: |
-             ssh $SSHUSERDE@SSHHOST
