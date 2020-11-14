@@ -48,26 +48,3 @@ jobs:
           name: Deploy Over SSH
           command: |
              ssh $SSHUSERDE@SSHHOST
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      #- build
-      - deployDevelop:
-          #requires:
-          
-          filters:
-            branches:
-              only: main 
-      - Aprobar:
-         type: approval
-         requires: 
-          -deployDevelop
-          
-      - deployProduction:
-          requires: 
-            -Aprobar
-          
-          filters:
-            branches:
-              only: main
